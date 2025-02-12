@@ -230,3 +230,7 @@ div .inner-card{
   padding: 5px;
   margin-top: -20px;
 }
+
+input:invalid {
+    outline: none !important;
+}
