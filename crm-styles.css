@@ -1,0 +1,223 @@
+/* General classes*/
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+[class*="primary"] {
+    background-color: #051464;
+    border-color: #051464;
+    font-weight: 400;
+}
+
+body {
+overflow-y: scroll;
+background-color: #fff;
+}
+
+.wrapper {
+width: calc(100% - 2px);
+transition: 0.3s;
+margin: auto;
+margin: 5px auto 0px auto;
+}
+
+/* Buttons */
+
+.btn {
+    white-space: nowrap;
+}
+
+.btn:hover {
+    background-color:#051464;
+    border-color: #051464;
+    color:#fff
+}
+
+.mantine-button, .mantine-button:hover {
+    background-color:#051464;
+    border-color: #051464;
+    color:#fff;
+}
+
+/* landing page buttons */
+
+.landing-button:hover{
+    background-color:#051464;
+    border-color: #051464;
+    color:#fff
+}
+
+/* Switches */
+
+.mantine-Switch-track:checked {
+    background-color:#051464;
+    border-color: #051464;
+}
+
+/*Navigation bar*/
+
+nav {
+    z-index : 999;
+    position : sticky;
+    top : 0;
+    width : 100%;
+    height: 70px;
+    background-color : #051464;
+    display : grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+nav img {
+    margin:auto auto auto 0;
+    padding:10px 10px;
+    height: 80px;
+}
+
+nav .dash-title {
+    font-size:24px;
+    color:#fff;
+}
+
+.nav-link{
+    color:#fff;
+}
+
+.nav-link:hover{
+    color:#fff;
+    text-decoration: underline !important
+}
+
+.nav-link:focus {
+    color:#fff;
+}
+
+nav .dash-title-container {
+    display:grid;
+    grid-template-columns:max-content max-content;
+    text-align:center;
+    margin-right:auto;
+    height:inherit;
+    background-color: #051464;
+}
+
+/* Tabs */
+div .tab-container .tab {
+    padding: 5px;
+    border: none  !important;
+    color: grey;
+}
+
+div .tab-container .tab--selected {
+    padding: 5px;
+    background-clip: content-box;
+    box-shadow: inset 0 0 0 5px #f9f9f9;
+    border: none;
+    color: black;
+}
+
+div .tab-container span {
+    display: flex;
+    font-weight: 500;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+}
+
+.data-tab-desc{
+    padding-bottom: 5px;
+    font-size: medium;
+    color: grey;
+}
+
+.tab-frame-card {
+    border-color: #F0F0F0;
+    margin-top: 10px;
+}
+
+div #main-jumbotron {
+    margin-bottom: 50px;
+    align-content: center;
+}
+
+div #jumbotron-div {
+    background-color: #F0F0F0;
+    padding: 5rem 5em 5rem 5rem;
+    text-align:center
+}
+
+div #mini-jumbo-children {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 1.5rem !important;
+}
+
+div #mini-jumbo-container {
+    margin: 0 100px 0 100px;
+}
+a {
+    text-decoration: none;
+}
+
+div .inner-card{
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 20px;
+}
+
+/* Labels */
+
+.data-label-tab {
+    font-weight: 500;
+    padding-top: 20px;
+}
+
+.generic-medium-label{
+    padding-bottom: 10px;
+    padding-top: 20px;
+    font-size: medium;
+}
+
+.generic-small-label{
+    padding-bottom: 10px;
+    padding-top: 20px;
+    font-size: small;
+}
+
+.few-top-pad-small-label {
+    padding-bottom: 10px;
+    padding-top: 10px;
+    font-size: small;
+}
+
+.accordion-medium-label {
+    padding-bottom: 5px;
+    padding-top: 5px;
+    font-size: medium;
+}
+
+/* Sliders */
+
+.text-slider-label{
+    padding-bottom: 10px;
+    padding-top: 20px;
+    font-size: small;
+}
+
+.slider-number-input{
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+.text-slider-header-label {
+    padding-bottom: 0px;
+    padding-top: 20px;
+}
+
+/* Tables */
+
+.generic-tables{
+    padding: 10px 20px 10px 20px
+}
