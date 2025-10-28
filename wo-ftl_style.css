@@ -1,0 +1,309 @@
+/* === RESET === */
+* { box-sizing: border-box; }
+
+/* === PALETA PRINCIPAL (modo oscuro) ===
+   Inspirado en tu azul corporativo (#0014DC)
+*/
+:root {
+    --color-bg: #0B0D22;
+    --color-bg-panel: #1A1E3F;
+    --color-primary: #003CFF;
+    --color-primary-soft: rgba(0, 14, 163, 0.3);
+    --color-text: #E4E8FF;
+    --color-text-secondary: #A1A7C2;
+    --color-border: #2A2E4A;
+    --color-header-bg: #0C1E74;
+    --color-header-text: #E4E8FF;
+    --color-footer-bg: #0C1E74;
+    --color-footer-text: #E4E8FF;
+}
+
+/* === LAYOUT GENERAL === */
+body, .app-container {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    min-height: 0;
+}
+
+/* === HEADER === */
+.header-title {
+    border: 1px solid var(--color-border);
+    text-align: center;
+    padding: 10px;
+    font-size: 18px;
+    height: auto;
+    background-color: var(--color-bg-panel);
+    color: var(--color-text);
+}
+
+/* === FOOTER === */
+.footer {
+    background-color: var(--color-footer-bg);
+    color: var(--color-footer-text);
+    padding: 8px;
+    text-align: center;
+    font-size: 12px;
+}
+
+/* === CELDA CONTENEDORA === */
+.cell-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0;
+    width: 100%;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    overflow: hidden;
+    padding: 0;
+}
+
+.cell-title {
+    font-weight: bold;
+    text-align: center;
+    background-color: var(--color-header-bg);
+    color: var(--color-header-text);
+    padding: 3px;
+    margin: 0;
+    width: 100%;
+    font-size: 12px;
+    border-radius: 6px 6px 0 0;
+}
+
+.cell-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 100%;
+    background-color: var(--color-bg-panel);
+    font-size: 11px;
+    color: var(--color-text);
+}
+
+/* === GRID PRINCIPAL === */
+.second-row {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 0.4fr 0.8fr 2fr 0.8fr;
+    gap: 4px;
+    width: 100%;
+    min-height: 0;
+    align-items: stretch;
+    grid-auto-rows: minmax(0, 1fr);
+}
+
+/* === SUBGRIDS === */
+.subgrid-70-30,
+.subgrid-20-60-20,
+.subgrid-20-20-60,
+.subgrid-50-50 {
+    display: grid;
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+    grid-auto-rows: minmax(0, 1fr);
+}
+
+.subgrid-70-30 { grid-template-rows: 1fr 1fr; }
+.subgrid-20-60-20 { grid-template-rows: 0.2fr 2.8fr 1fr; }
+.subgrid-20-20-60 { grid-template-rows: 1fr 1fr 2fr; }
+.subgrid-50-50 { grid-template-rows: 1fr 1fr; }
+
+/* === ZONAS === */
+.zone-grid-2cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    height: 100%;
+    min-height: 0;
+    width: 100%;
+    overflow: hidden;
+    grid-auto-rows: minmax(0, 1fr);
+}
+
+.zone-grid-4cols {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    height: 100%;
+    min-height: 0;
+    width: 100%;
+    overflow: hidden;
+    grid-auto-rows: minmax(0, 1fr);
+}
+
+/* === ENCABEZADOS DE ZONA === */
+.zone-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    background-color: var(--color-bg-panel);
+}
+
+.zone-header {
+    border-bottom: 1px solid var(--color-border);
+    background-color: var(--color-bg-panel);
+}
+
+.zone-title {
+    font-weight: bold;
+    font-size: 13px;
+    text-align: center;
+    background-color: var(--color-header-bg);
+    color: var(--color-header-text);
+    padding: 4px;
+    border-radius: 6px 6px 0 0;
+}
+
+.zone-data {
+    font-size: 11px;
+    text-align: center;
+    padding: 3px;
+    color: var(--color-text-secondary);
+}
+
+.zone-body {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: var(--color-bg-panel);
+}
+
+/* === NAVBAR === */
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 60px;
+    background-color: var(--color-header-bg);
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.navbar-logo {
+    height: 80px;
+    margin-right: 10px;
+}
+
+.navbar-title {
+    font-size: 28px;
+    color: var(--color-header-text);
+    font-weight: bold;
+}
+
+.navbar-links {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    align-items: center;
+    margin-left: auto;
+}
+
+.nav-link {
+    color: var(--color-header-text) !important;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+    color: #d0d4ff !important;
+    text-decoration: underline !important;
+}
+
+/* === SCROLLBARS PERSONALIZADOS (modo oscuro) === */
+
+/* Para navegadores basados en WebKit (Chrome, Edge, Opera, Safari) */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-bg-panel);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 4px;
+    transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary);
+}
+
+/* Para Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border) var(--color-bg-panel);
+}
+
+/* Fondo completo del modal (incluye borde blanco) */
+div[class*="mantine-Modal-modal"] {
+  position: fixed !important;  
+  background-color: rgba(0, 14, 163, 0.3) !important;  /* azul oscuro */
+  color: #FFFFFF !important;
+  /*border: 1px solid #2137A6 !important;*/
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  border-radius: 12px;
+  overflow: hidden !important;
+}
+
+/* Barra superior del modal */
+div[class*="mantine-Modal-header"] {
+  background-color: #0C1E74 !important;
+  border-bottom: 1px solid #2137A6 !important;
+  color: #FFFFFF !important;
+}
+
+/* Cuerpo del modal */
+div[class*="mantine-Modal-body"] {
+  background-color: #1A1E3F !important;
+  color: #FFFFFF !important;
+  max-height: 80vh;       /* permite scroll */
+  overflow-y: auto;       /* activa scroll si hay mucho contenido */
+  padding: 20px;
+}
+
+/* Scrollbar personalizado dentro del modal */
+div[class*="mantine-Modal-body"]::-webkit-scrollbar {
+  width: 10px;
+}
+div[class*="mantine-Modal-body"]::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 14, 163, 0.3);
+  border-radius: 10px;
+}
+div[class*="mantine-Modal-body"]::-webkit-scrollbar-track {
+  background-color: rgba(0, 14, 163, 0.3);
+}
