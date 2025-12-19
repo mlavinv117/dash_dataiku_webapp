@@ -40,6 +40,14 @@ body, .app-container {
     min-height: 0;
 }
 
+#page-container {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow: hidden;
+}
+
 /* === HEADER === */
 .header-title {
     border: 1px solid var(--color-border);
