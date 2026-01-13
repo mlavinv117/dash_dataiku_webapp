@@ -1,9 +1,17 @@
 /* === RESET === */
 * { box-sizing: border-box; }
 
-/* === PALETA PRINCIPAL (modo oscuro) ===
-   Inspirado en tu azul corporativo (#0014DC)
-*/
+/* ✅ NUEVO: escala global (clave para que se vea igual en pantallas grandes) */
+html {
+  /* Ajusta estos valores si quieres más/menos escala:
+     - mínimo: 13px (pantallas pequeñas)
+     - ideal: 0.85vw (crece con el ancho)
+     - máximo: 18px (pantallas grandes / 4K)
+  */
+  font-size: clamp(13px, 0.85vw, 18px);
+}
+
+/* === PALETA PRINCIPAL (modo oscuro) === */
 :root {
     --color-bg: #0B0D22;
     --color-bg-panel: #1A1E3F;
@@ -18,6 +26,12 @@
     --color-footer-text: #E4E8FF;
 }
 
+body {
+  pointer-events: auto !important;
+  /* ✅ NUEVO: base tipográfica ligada a rem */
+  font-size: 1rem;
+}
+
 /* === LAYOUT GENERAL === */
 body, .app-container {
     background-color: var(--color-bg);
@@ -29,14 +43,14 @@ body, .app-container {
     flex-direction: column;
     height: 100vh;
     width: 100vw;
-    overflow: hidden;
+    overflow: auto;
 }
 
 .main-content {
     flex: 1;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    overflow: auto;
     min-height: 0;
 }
 
@@ -45,15 +59,16 @@ body, .app-container {
     display: flex;
     flex-direction: column;
     min-height: 0;
-    overflow: hidden;
+    overflow: auto;
 }
 
 /* === HEADER === */
 .header-title {
     border: 1px solid var(--color-border);
     text-align: center;
-    padding: 10px;
-    font-size: 18px;
+    /* ✅ px -> rem */
+    padding: 0.65rem;          /* antes 10px */
+    font-size: 1.2rem;         /* antes 18px */
     height: auto;
     background-color: var(--color-bg-panel);
     color: var(--color-text);
@@ -63,9 +78,10 @@ body, .app-container {
 .footer {
     background-color: var(--color-footer-bg);
     color: var(--color-footer-text);
-    padding: 8px;
+    /* ✅ px -> rem */
+    padding: 0.5rem;           /* antes 8px */
     text-align: center;
-    font-size: 12px;
+    font-size: 0.8rem;         /* antes 12px */
 }
 
 /* === CELDA CONTENEDORA === */
@@ -76,7 +92,8 @@ body, .app-container {
     min-height: 0;
     width: 100%;
     border: 1px solid var(--color-border);
-    border-radius: 6px;
+    /* ✅ px -> rem */
+    border-radius: 0.4rem;     /* antes 6px */
     overflow: hidden;
     padding: 0;
 }
@@ -86,11 +103,12 @@ body, .app-container {
     text-align: center;
     background-color: var(--color-header-bg);
     color: var(--color-header-text);
-    padding: 3px;
+    /* ✅ px -> rem */
+    padding: 0.2rem;           /* antes 3px */
     margin: 0;
     width: 100%;
-    font-size: 12px;
-    border-radius: 6px 6px 0 0;
+    font-size: 0.85rem;        /* antes 12px */
+    border-radius: 0.4rem 0.4rem 0 0;  /* antes 6px 6px 0 0 */
 }
 
 .cell-content {
@@ -102,7 +120,8 @@ body, .app-container {
     overflow-x: hidden;
     width: 100%;
     background-color: var(--color-bg-panel);
-    font-size: 11px;
+    /* ✅ px -> rem */
+    font-size: 0.8rem;         /* antes 11px */
     color: var(--color-text);
 }
 
@@ -110,8 +129,9 @@ body, .app-container {
 .second-row {
     flex: 1;
     display: grid;
-    grid-template-columns: 0.4fr 0.8fr 2fr 0.8fr;
-    gap: 4px;
+    grid-template-columns: 0.35fr 1fr 1.9fr 0.75fr;
+    /* ✅ px -> rem */
+    gap: 0.25rem;              /* antes 4px */
     width: 100%;
     min-height: 0;
     align-items: stretch;
@@ -130,10 +150,29 @@ body, .app-container {
     grid-auto-rows: minmax(0, 1fr);
 }
 
+.subgrid-30-70 {
+    display: grid;
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+
+    grid-template-rows: auto 1fr;
+}
 .subgrid-70-30 { grid-template-rows: 1fr 1fr; }
-.subgrid-20-60-20 { grid-template-rows: 0.2fr 2.8fr 1fr; }
-.subgrid-20-20-60 { grid-template-rows: 1fr 1fr 2fr; }
+.subgrid-20-20-60 { grid-template-rows: auto auto 1fr; }
+.subgrid-20-60-20 { grid-template-rows: auto 2.8fr 1fr; }
+
 .subgrid-50-50 { grid-template-rows: 1fr 1fr; }
+.column-subgrid-50-50 { grid-template-rows: 1fr 1fr; }
+
+.subgrid-100 {
+    display: grid;
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+
+    grid-template-rows: 1fr; /* una sola fila */
+}
 
 /* === ZONAS === */
 .zone-grid-2cols {
@@ -147,8 +186,21 @@ body, .app-container {
     grid-auto-rows: minmax(0, 1fr);
 }
 
+.zone-grid-3cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;  /* 3 columnas */
+    gap: 0;
+    height: 100%;
+    min-height: 0;
+    width: 100%;
+    overflow: hidden;
+    grid-auto-rows: minmax(0, 1fr);
+}
+
+
 .zone-grid-4cols {
     display: grid;
+    /* 🚫 NO se cambia: necesitas 5 columnas */
     grid-template-columns: repeat(5, 1fr);
     gap: 0;
     height: 100%;
@@ -166,7 +218,8 @@ body, .app-container {
     min-height: 0;
     overflow: hidden;
     border: 1px solid var(--color-border);
-    border-radius: 6px;
+    /* ✅ px -> rem */
+    border-radius: 0.4rem;     /* antes 6px */
     background-color: var(--color-bg-panel);
 }
 
@@ -177,18 +230,22 @@ body, .app-container {
 
 .zone-title {
     font-weight: bold;
-    font-size: 13px;
+    /* ✅ px -> rem */
+    font-size: 0.95rem;        /* antes 13px */
     text-align: center;
     background-color: var(--color-header-bg);
     color: var(--color-header-text);
-    padding: 4px;
-    border-radius: 6px 6px 0 0;
+    /* ✅ px -> rem */
+    padding: 0.28rem;          /* antes 4px */
+    border-radius: 0.4rem 0.4rem 0 0; /* antes 6px 6px 0 0 */
 }
 
 .zone-data {
-    font-size: 11px;
+    /* ✅ px -> rem */
+    font-size: 0.8rem;         /* antes 11px */
     text-align: center;
-    padding: 3px;
+    /* ✅ px -> rem */
+    padding: 0.2rem;           /* antes 3px */
     color: var(--color-text-secondary);
 }
 
@@ -208,31 +265,39 @@ body, .app-container {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 0 60px;
+    /* ✅ px -> rem */
+    padding: 0 2.5rem;         /* antes 0 40px */
     background-color: var(--color-header-bg);
+    /* ✅ px -> rem */
+    min-height: 3.5rem;        /* antes 56px */
 }
 
 .navbar-left {
     display: flex;
     align-items: center;
-    gap: 10px;
+    /* ✅ px -> rem */
+    gap: 0.65rem;              /* antes 10px */
 }
 
 .navbar-logo {
-    height: 80px;
-    margin-right: 10px;
+    /* ✅ px -> rem */
+    height: 3rem;              /* antes 48px */
+    margin-right: 0.5rem;      /* antes 8px */
 }
 
 .navbar-title {
-    font-size: 28px;
-    color: var(--color-header-text);
+    /* ✅ px -> rem */
+    font-size: 1.35rem;        /* antes 20px */
+    line-height: 1;
+    margin: 0;
     font-weight: bold;
 }
 
 .navbar-links {
     display: flex;
     flex-direction: row;
-    gap: 30px;
+    /* ✅ px -> rem */
+    gap: 1.9rem;               /* antes 30px */
     align-items: center;
     margin-left: auto;
 }
@@ -248,22 +313,23 @@ body, .app-container {
     text-decoration: underline !important;
 }
 
-/* === SCROLLBARS PERSONALIZADOS (modo oscuro) === */
-
-/* Para navegadores basados en WebKit (Chrome, Edge, Opera, Safari) */
+/* === SCROLLBARS PERSONALIZADOS === */
 ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    /* ✅ px -> rem */
+    width: 0.5rem;             /* antes 8px */
+    height: 0.5rem;            /* antes 8px */
 }
 
 ::-webkit-scrollbar-track {
     background: var(--color-bg-panel);
-    border-radius: 4px;
+    /* ✅ px -> rem */
+    border-radius: 0.25rem;    /* antes 4px */
 }
 
 ::-webkit-scrollbar-thumb {
     background: var(--color-border);
-    border-radius: 4px;
+    /* ✅ px -> rem */
+    border-radius: 0.25rem;    /* antes 4px */
     transition: background 0.2s ease;
 }
 
@@ -277,42 +343,37 @@ body, .app-container {
     scrollbar-color: var(--color-border) var(--color-bg-panel);
 }
 
-/* Fondo completo del modal (incluye borde blanco) */
+/* === MODAL Mantine === */
 div[class*="mantine-Modal-modal"] {
-  position: fixed !important;  
-  background-color: rgba(0, 14, 163, 0.3) !important;  /* azul oscuro */
+  background-color: rgba(0, 14, 163, 0.3) !important;
   color: #FFFFFF !important;
-  /*border: 1px solid #2137A6 !important;*/
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-  border-radius: 12px;
-  overflow: hidden !important;
+  box-shadow: 0 0 0.95rem rgba(0, 0, 0, 0.5); /* antes 0 0 15px */
+  border-radius: 0.75rem;                    /* antes 12px */
 }
 
-/* Barra superior del modal */
 div[class*="mantine-Modal-header"] {
   background-color: #0C1E74 !important;
   border-bottom: 1px solid #2137A6 !important;
   color: #FFFFFF !important;
 }
 
-/* Cuerpo del modal */
 div[class*="mantine-Modal-body"] {
   background-color: #1A1E3F !important;
   color: #FFFFFF !important;
-  max-height: 80vh;       /* permite scroll */
-  overflow-y: auto;       /* activa scroll si hay mucho contenido */
-  padding: 20px;
+  max-height: 80vh;
+  overflow-y: auto;
+  /* ✅ px -> rem */
+  padding: 1.25rem;          /* antes 20px */
 }
 
-/* Scrollbar personalizado dentro del modal */
 div[class*="mantine-Modal-body"]::-webkit-scrollbar {
-  width: 10px;
+  /* ✅ px -> rem */
+  width: 0.65rem;            /* antes 10px */
 }
 div[class*="mantine-Modal-body"]::-webkit-scrollbar-thumb {
   background-color: rgba(0, 14, 163, 0.3);
-  border-radius: 10px;
+  border-radius: 0.65rem;    /* antes 10px */
 }
 div[class*="mantine-Modal-body"]::-webkit-scrollbar-track {
   background-color: rgba(0, 14, 163, 0.3);
 }
-
